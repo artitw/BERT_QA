@@ -1,5 +1,5 @@
 # BERT-QA
-Build question-answering systems using state-of-the-art pre-trained contextualized language models, e.g. BERT.
+Build question-answering systems using state-of-the-art pre-trained contextualized language models, e.g. BERT. We are working to accelerate the development of question-answering systems based on BERT and TF 2.0!
 
 ## Background
 
@@ -46,6 +46,14 @@ qa = squad.SQuAD()
 qa.preprocess_training_data()
 qa.fit()
 predictions = qa.predict()
+```
+
+### evaluate
+```
+import json
+json_data = open('dev-v1.1.json')
+data = json.load(json_data)
+qa.evaluate(data, predictions)
 ```
 
 ## Advanced usage
