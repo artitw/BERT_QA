@@ -18,6 +18,9 @@ To cite this work, use the following BibTeX citation.
 }
 ```
 
+## Requirements
+TensorFlow 2.0 will be installed if not already on your system
+
 ## Installation
 ```
 pip install bert_qa
@@ -59,7 +62,7 @@ qa.evaluate(data, predictions)
 ## Advanced usage
 
 ### Model type
-The default model is a cased Bidirectional Encoder Representations from Transformers (BERT) consisting of 12 transformer layers, 12 self-attention heads per layer, and a hidden size of 768. Below are all models currently supported that you can specify with `hub_module_handle`. We expect that more will be added in the future. For more information, see [TensorFlow's BERT GitHub](https://github.com/tensorflow/models/blob/master/official/nlp/bert/README.md).
+The default model is an uncased Bidirectional Encoder Representations from Transformers (BERT) consisting of 12 transformer layers, 12 self-attention heads per layer, and a hidden size of 768. Below are all models currently supported that you can specify with `hub_module_handle`. We expect that more will be added in the future. For more information, see [TensorFlow's BERT GitHub](https://github.com/tensorflow/models/blob/master/official/nlp/bert/README.md).
 
 *   **[`BERT-Large, Uncased (Whole Word Masking)`](https://storage.googleapis.com/cloud-tpu-checkpoints/bert/keras_bert/wwm_uncased_L-24_H-1024_A-16.tar.gz)**:
     24-layer, 1024-hidden, 16-heads, 340M parameters
