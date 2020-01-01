@@ -178,7 +178,7 @@ class SQuAD(object):
       version_2_with_negative=False,
       distribution_strategy="mirrored",
       hub_module_url=None,
-      sp_model_file="uncased_L-12_H-768_A-12/sp_model",
+      sp_model_file=None,
       vocab_file="uncased_L-12_H-768_A-12/vocab.txt",
       bert_config_file="uncased_L-12_H-768_A-12/bert_config.json",
       init_checkpoint="uncased_L-12_H-768_A-12/bert_model.ckpt",
@@ -389,7 +389,10 @@ class SQuAD(object):
 
   def predict(self, 
               predict_batch_size=4,
-              predict_file="dev-v1.1.json"
+              predict_file="dev-v1.1.json",
+              n_best_size=20,
+              max_answer_length=30,
+              verbose_logging=False
     ):
 
     self.predict_batch_size=predict_batch_size
@@ -400,10 +403,10 @@ class SQuAD(object):
     bert_config = config_cls.from_json_file(self.bert_config_file)
     if tokenizer_cls == tokenization.FullTokenizer:
       tokenizer = tokenizer_cls(
-          vocab_file=self.vocab_file, do_lower_case=FLAGS.do_lower_case)
+          vocab_file=self.vocab_file, do_lower_case=self.do_lower_case)
     else:
       assert tokenizer_cls == tokenization.FullSentencePieceTokenizer
-      tokenizer = tokenizer_cls(sp_model_file=FLAGS.sp_model_file)
+      tokenizer = tokenizer_cls(sp_model_file=self.sp_model_file)
     doc_stride = self.input_meta_data['doc_stride']
     max_query_length = self.input_meta_data['max_query_length']
     # Whether data should be in Ver 2.0 format.
@@ -461,13 +464,13 @@ class SQuAD(object):
         eval_examples,
         eval_features,
         all_results,
-        FLAGS.n_best_size,
-        FLAGS.max_answer_length,
-        FLAGS.do_lower_case,
+        n_best_size,
+        max_answer_length,
+        self.do_lower_case,
         output_prediction_file,
         output_nbest_file,
         output_null_log_odds_file,
-        verbose=FLAGS.verbose_logging)
+        verbose=verbose_logging)
 
 
   def evaluate(self, dataset, predictions):
