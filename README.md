@@ -31,9 +31,9 @@ Run Colab demo notebook [here](https://colab.research.google.com/drive/1-tLvxSuI
 
 ### download pre-trained models and SQuAD data
 ```
-wget -q https://storage.googleapis.com/cloud-tpu-checkpoints/bert/keras_bert/cased_L-12_H-768_A-12.tar.gz
-tar -xvzf cased_L-12_H-768_A-12.tar.gz
-mv -f home/hongkuny/public/pretrained_models/keras_bert/cased_L-12_H-768_A-12 .
+wget -q https://storage.googleapis.com/cloud-tpu-checkpoints/bert/keras_bert/uncased_L-12_H-768_A-12.tar.gz
+tar -xvzf uncased_L-12_H-768_A-12.tar.gz
+mv -f home/hongkuny/public/pretrained_models/keras_bert/uncased_L-12_H-768_A-12 .
 ```
 
 ### download SQuAD data
