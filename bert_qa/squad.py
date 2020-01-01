@@ -453,7 +453,7 @@ class SQuAD(object):
     logging.info('  Batch size = %d', self.predict_batch_size)
 
     num_steps = int(dataset_size / self.predict_batch_size)
-    all_results = predict_squad_customized(bert_config,
+    all_results = self.predict_squad_customized(bert_config,
                                            eval_writer.filename, num_steps)
 
     output_prediction_file = os.path.join(self.model_dir, 'predictions.json')
