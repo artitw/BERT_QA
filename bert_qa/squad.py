@@ -275,7 +275,7 @@ class SQuAD(object):
       # Prediction always uses float32, even if training uses mixed precision.
       tf.keras.mixed_precision.experimental.set_policy('float32')
       squad_model, _ = bert_models.squad_model(
-          bert_config, input_meta_data['max_seq_length'], float_type=tf.float32)
+          bert_config, self.input_meta_data['max_seq_length'], float_type=tf.float32)
 
     checkpoint_path = tf.train.latest_checkpoint(self.model_dir)
     logging.info('Restoring checkpoints from %s', checkpoint_path)
