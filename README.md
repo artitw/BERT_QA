@@ -54,9 +54,9 @@ predictions = qa.predict()
 ### evaluate
 ```
 import json
-json_data = open('dev-v1.1.json')
-data = json.load(json_data)
-qa.evaluate(data, predictions)
+pred_data = json.load(open('model/predictions.json'))
+dev_data = json.load(open('dev-v1.1.json'))['data']
+qa.evaluate(dev_data, pred_data)
 ```
 
 ## Advanced usage
