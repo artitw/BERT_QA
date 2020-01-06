@@ -182,8 +182,7 @@ class SQuAD(object):
       vocab_file="uncased_L-12_H-768_A-12/vocab.txt",
       bert_config_file="uncased_L-12_H-768_A-12/bert_config.json",
       init_checkpoint="uncased_L-12_H-768_A-12/bert_model.ckpt",
-      model_dir="model",
-      num_train_epochs=2
+      model_dir="model"
     ):
     # Users should always run this script under TF 2.x
     assert tf.version.VERSION.startswith('2.')
@@ -200,7 +199,6 @@ class SQuAD(object):
     self.bert_config_file=bert_config_file
     self.init_checkpoint=init_checkpoint
     self.model_dir=model_dir
-    self.num_train_epochs=num_train_epochs
     self.hub_module_url=hub_module_url
 
   def get_dataset_fn(self, input_file_pattern, max_seq_length, global_batch_size,
@@ -310,6 +308,7 @@ class SQuAD(object):
           steps_per_loop=200,
           train_batch_size=4,
           learning_rate=8e-5,
+          num_train_epochs=2,
           custom_callbacks=None,
           run_eagerly=False,
           fp16_implementation="keras"):
