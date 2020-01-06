@@ -183,8 +183,6 @@ class SQuAD(object):
       bert_config_file="uncased_L-12_H-768_A-12/bert_config.json",
       init_checkpoint="uncased_L-12_H-768_A-12/bert_model.ckpt",
       model_dir="model",
-      train_batch_size=4,
-      learning_rate=8e-5,
       num_train_epochs=2
     ):
     # Users should always run this script under TF 2.x
@@ -202,8 +200,6 @@ class SQuAD(object):
     self.bert_config_file=bert_config_file
     self.init_checkpoint=init_checkpoint
     self.model_dir=model_dir
-    self.train_batch_size=train_batch_size
-    self.learning_rate=learning_rate
     self.num_train_epochs=num_train_epochs
     self.hub_module_url=hub_module_url
 
@@ -309,11 +305,11 @@ class SQuAD(object):
         logging.info('Made predictions for %d records.', len(all_results))
     return all_results
 
-
   def fit(self,
           init_checkpoint=None,
           steps_per_loop=200,
-          learning_rate=5e-5,
+          train_batch_size=4,
+          learning_rate=8e-5,
           custom_callbacks=None,
           run_eagerly=False,
           fp16_implementation="keras"):
