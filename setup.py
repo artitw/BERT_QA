@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bert_qa",
-    version="0.0.7",
+    version="0.0.8",
     author="Artit Wangperawong",
     author_email="artitw@gmail.com",
     description="Question-Answering system using state-of-the-art pre-trained language models.",

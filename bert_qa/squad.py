@@ -325,7 +325,7 @@ class SQuAD(object):
 
     bert_config = MODEL_CLASSES[self.model_type][0].from_json_file(
         self.bert_config_file)
-    epochs = self.num_train_epochs
+    epochs = num_train_epochs
     num_train_examples = self.input_meta_data['train_data_size']
     max_seq_length = self.input_meta_data['max_seq_length']
     steps_per_epoch = int(num_train_examples / self.train_batch_size)
