@@ -328,12 +328,12 @@ class SQuAD(object):
     epochs = num_train_epochs
     num_train_examples = self.input_meta_data['train_data_size']
     max_seq_length = self.input_meta_data['max_seq_length']
-    steps_per_epoch = int(num_train_examples / self.train_batch_size)
-    warmup_steps = int(epochs * num_train_examples * 0.1 / self.train_batch_size)
+    steps_per_epoch = int(num_train_examples / train_batch_size)
+    warmup_steps = int(epochs * num_train_examples * 0.1 / train_batch_size)
     train_input_fn = self.get_dataset_fn(
         self.train_data_path,
         max_seq_length,
-        self.train_batch_size,
+        train_batch_size,
         is_training=True)
 
     def _get_squad_model():
